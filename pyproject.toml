@@ -23,12 +23,21 @@ dependencies = ["piexif==1.1.3", "click", "importlib-resources"]
 
 [project.optional-dependencies]
 dev = ["ruff", "build", "twine"]
+gui = [
+  "streamlit>=1.32",
+  "keyring>=25.0",
+  "requests>=2.31",
+  "Pillow>=10.0",
+  "piexif>=1.1.3",
+]
+
+[tool.setuptools.package-data]
+# Ensure your existing GraphQL files are packaged
+"famly_fetch.graphql" = ["*.graphql"]
 
 [project.scripts]
 famly-fetch = "famly_fetch.cli:main"
-
-[tool.setuptools.package-data]
-"famly_fetch.graphql" = ["*.graphql"]
+famly-fetch-gui = "famly_fetch.gui.bootstrap:main"
 
 [tool.ruff]
 # Exclude a variety of commonly ignored directories.
@@ -108,3 +117,4 @@ docstring-code-format = false
 # This only has an effect when the `docstring-code-format` setting is
 # enabled.
 docstring-code-line-length = "dynamic"
+
